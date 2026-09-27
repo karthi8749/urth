@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { LogoIntro } from "@/components/ui/logo-intro";
 import "./globals.css";
 import { withBasePath } from "@/lib/basePath";
+//hlo
 
 const display = Syne({
   variable: "--font-display",
