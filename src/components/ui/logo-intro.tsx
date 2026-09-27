@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 import { useIntro } from "@/components/providers/homepage-intro-provider";
 
 // The four corner "frame" paths of the URTH mark, taken directly from
@@ -193,7 +193,7 @@ export function LogoIntro() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url(${brandPatternSrc("orange")})`,
+            backgroundImage: `url(${brandPatternCssUrl("orange")})`,
             backgroundSize: "560px",
             backgroundPosition: "center",
           }}
