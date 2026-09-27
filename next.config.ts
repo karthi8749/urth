@@ -1,3 +1,4 @@
+```ts
 import type { NextConfig } from "next";
 import path from "path";
 
@@ -18,10 +19,20 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+
   ...(isGithubPages && {
     basePath: repoBasePath,
     assetPrefix: repoBasePath,
   }),
+
+  // Make sure static assets from the public folder
+  // are exported correctly on GitHub Pages.
+  ...(isGithubPages && {
+    experimental: {
+      optimizeCss: false,
+    },
+  }),
 };
 
 export default nextConfig;
+```
