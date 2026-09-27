@@ -1,3 +1,5 @@
+import { withBasePath } from "./paths";
+
 /**
  * Official URTH logo files from the brand package.
  * Served from: public/urthstudiobrandingpackage/… (copy of source package)
@@ -66,13 +68,18 @@ const FOLDER: Record<BrandLogoVariant, string> = {
   wordmark: "WORDMARK",
 };
 
-/** Encode each path segment so spaces work in URLs */
+/**
+ * Encode each path segment so spaces work in URLs, and prepend the
+ * GitHub Pages basePath (e.g. /urth) so the file actually resolves.
+ * withBasePath() is idempotent, so this stays safe even when the
+ * result also passes through the custom next/image loader afterward.
+ */
 export function brandAsset(...segments: string[]) {
-  return (
+  return withBasePath(
     "/" +
-    ["urthstudiobrandingpackage", "URTH LOGO PACKAGE", ...segments]
-      .map(encodeURIComponent)
-      .join("/")
+      ["urthstudiobrandingpackage", "URTH LOGO PACKAGE", ...segments]
+        .map(encodeURIComponent)
+        .join("/"),
   );
 }
 

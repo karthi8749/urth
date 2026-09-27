@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { withBasePath } from "@/lib/paths";
 
 export function ProjectImageCarousel({
   title,
@@ -47,7 +48,7 @@ export function ProjectImageCarousel({
         {/* Previous image - fades out */}
         {previousIndex !== null && (
           <img
-            src={images[previousIndex]}
+            src={withBasePath(images[previousIndex])}
             alt=""
             className="absolute inset-0 h-[360px] w-full rounded-none object-cover scale-[1.03] opacity-0 transition-all duration-700 ease-out md:h-[520px]"
           />
@@ -55,7 +56,7 @@ export function ProjectImageCarousel({
 
         {/* Current image - fades in */}
         <img
-          src={images[currentIndex]}
+          src={withBasePath(images[currentIndex])}
           alt={`${title} gallery view ${currentIndex + 1}`}
           className="relative h-[360px] w-full rounded-none object-cover scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px]"
         />
@@ -78,18 +79,16 @@ export function ProjectImageCarousel({
           ›
         </button>
       </div>
+
       <div className="mx-auto mt-6 max-w-[1100px] border-t border-cream/10 pt-4 md:mt-8 md:pt-5">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-7 md:gap-x-6 md:gap-y-5">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-6 md:gap-x-6 md:gap-y-5">
           {details.map((item) => (
-            <div
-              key={item.label}
-              className={item.label === "Client" ? "min-w-0 md:col-span-2" : "min-w-0"}
-            >
+            <div key={item.label} className="min-w-0">
               <p className="text-[10px] uppercase tracking-[0.28em] text-sky/90 md:text-[11px]">
                 {item.label}
               </p>
 
-              <p className="mt-2 whitespace-nowrap text-sm text-cream md:text-base">
+              <p className="mt-2 text-sm text-cream md:text-base">
                 {item.value}
               </p>
             </div>
