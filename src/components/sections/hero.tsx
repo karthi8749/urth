@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ButtonLink } from "@/components/ui/button-link";
 import { brandPatternCssUrl } from "@/lib/brand-assets";
 
+
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const bg = useRef<HTMLDivElement>(null);

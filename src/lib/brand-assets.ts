@@ -3,7 +3,12 @@ import { withBasePath } from "./paths";
 const PKG = "/urthstudiobrandingpackage/URTH LOGO PACKAGE";
 
 export type BrandLogoVariant =
-  | "primary" | "secondary" | "tertiary" | "quaternary" | "brandmark" | "wordmark";
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "quaternary"
+  | "brandmark"
+  | "wordmark";
 
 export type BrandColor = "cream" | "orange" | "brown" | "blue";
 
@@ -68,11 +73,15 @@ export function brandLogoSrc(
   variant: BrandLogoVariant = "primary",
   color: BrandColor = "cream",
 ) {
-  return withBasePath(brandAsset(FOLDER[variant], COLOR_FILE[variant][color]));
+  return withBasePath(
+    brandAsset(FOLDER[variant], COLOR_FILE[variant][color])
+  );
 }
 
 export function brandDotSrc() {
-  return withBasePath(brandAsset(FOLDER.primary, "ORANGE DOT.svg"));
+  return withBasePath(
+    brandAsset(FOLDER.primary, "ORANGE DOT.svg")
+  );
 }
 
 export function brandPatternSrc(color: BrandColor = "orange") {
@@ -84,6 +93,7 @@ export function brandPatternSrc(color: BrandColor = "orange") {
         : color === "blue"
           ? "URTH_BRAND PATTERN LIGHT BLUE.svg"
           : "URTH_BRAND PATTERN BOLD ORANGE.svg";
+
   return brandAsset("BRAND PATTERN", file);
 }
 

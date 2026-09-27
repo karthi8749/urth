@@ -1,16 +1,11 @@
-/**
- * GitHub Pages serves this site from a subpath (/urth), so every
- * asset URL needs that prefix. next/image handles this automatically
- * via the custom loader in `image-loader.ts`, but plain <img> tags and
- * any other raw "/..." path need it added manually — use this helper
- * for those.
- */
-export function withBasePath(src: string): string {
-  if (!src) return src;
-  if (/^https?:\/\//i.test(src)) return src;
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  if (!basePath || src.startsWith(basePath)) return src;
+export function withBasePath(path: string) {
+  if (!path) return path;
 
-  return `${basePath}${src.startsWith("/") ? src : `/${src}`}`;
+  if (/^([a-z]+:)?\/\//i.test(path) || path.startsWith("data:")) {
+    return path;
+  }
+
+  return `${basePath}${path}`;
 }
