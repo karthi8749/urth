@@ -8,7 +8,7 @@ import path from "path";
 // (set by the GitHub Actions workflow below); a normal local/Hostinger
 // build is unaffected and still serves from "/".
 const isGithubPages = process.env.GITHUB_PAGES === "true";
-const repoBasePath = "/urth";
+const repoBasePath = "/urthstudiobrandingpackage";
 
 const nextConfig: NextConfig = {
   output: "export",
