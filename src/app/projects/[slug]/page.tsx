@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ProjectImageCarousel } from "@/components/ui/project-image-carousel";
 import { getProject, projects } from "@/content/projects";
+import { withBasePath } from "@/lib/basePath";
 
 type Props = { params: Promise<{ slug: string }> };
 

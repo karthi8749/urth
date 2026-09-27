@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button-link";
 import { projects } from "@/content/projects";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 
 gsap.registerPlugin(ScrollTrigger);
 

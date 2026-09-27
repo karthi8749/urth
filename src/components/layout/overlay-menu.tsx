@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNav } from "@/components/providers/nav-provider";
 import { expertiseSubLinks, navLinks } from "@/content/nav";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 import { cn } from "@/lib/utils";
 
 export function OverlayMenu() {

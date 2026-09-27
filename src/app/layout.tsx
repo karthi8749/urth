@@ -8,6 +8,7 @@ import { OverlayMenu } from "@/components/layout/overlay-menu";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LogoIntro } from "@/components/ui/logo-intro";
 import "./globals.css";
+import { withBasePath } from "@/lib/basePath";
 
 const display = Syne({
   variable: "--font-display",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   description:
     "URTH is an architecture and interior design practice shaped by people, place and the rhythms of everyday life.",
   icons: {
-    icon: "/favicon.svg",
+    icon: withBasePath("/favicon.svg"),
   },
   openGraph: {
     title: "URTH — Design Beyond",

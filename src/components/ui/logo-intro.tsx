@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 import { useIntro } from "@/components/providers/homepage-intro-provider";
 
 // The four corner "frame" paths of the URTH mark, taken directly from

@@ -1,5 +1,5 @@
 "use client";
-
+import { withBasePath } from "@/lib/basePath";
 import { useEffect, useState } from "react";
 
 export function ProjectImageCarousel({
@@ -47,7 +47,7 @@ export function ProjectImageCarousel({
         {/* Previous image - fades out */}
         {previousIndex !== null && (
           <img
-            src={images[previousIndex]}
+            src={withBasePath(images[previousIndex])}
             alt=""
             className="absolute inset-0 h-[360px] w-full rounded-none object-cover scale-[1.03] opacity-0 transition-all duration-700 ease-out md:h-[520px]"
           />
@@ -55,7 +55,7 @@ export function ProjectImageCarousel({
 
         {/* Current image - fades in */}
         <img
-          src={images[currentIndex]}
+          src={withBasePath(images[currentIndex])}
           alt={`${title} gallery view ${currentIndex + 1}`}
           className="relative h-[360px] w-full rounded-none object-cover scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px]"
         />

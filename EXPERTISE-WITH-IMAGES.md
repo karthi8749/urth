@@ -172,7 +172,7 @@ Each portrait panel includes:
 
 Uses the existing `brandPatternSrc()` utility:
 ```tsx
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 
 backgroundImage: `url(${brandPatternSrc(item.patternColor)})`
 ```

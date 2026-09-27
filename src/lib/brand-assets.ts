@@ -3,6 +3,7 @@
  * Served from: public/urthstudiobrandingpackage/… (copy of source package)
  * Source of truth: urthstudiobrandingpackage/URTH LOGO PACKAGE/
  */
+import { withBasePath } from "./basePath";
 const PKG = "/urthstudiobrandingpackage/URTH LOGO PACKAGE";
 
 export type BrandLogoVariant =
@@ -98,6 +99,10 @@ export function brandPatternSrc(color: BrandColor = "orange") {
           ? "URTH_BRAND PATTERN LIGHT BLUE.svg"
           : "URTH_BRAND PATTERN BOLD ORANGE.svg";
   return brandAsset("BRAND PATTERN", file);
+}
+
+export function brandPatternCssUrl(color: BrandColor = "orange") {
+  return withBasePath(brandPatternSrc(color));
 }
 
 export { PKG };

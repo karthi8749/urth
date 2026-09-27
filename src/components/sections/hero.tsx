@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ButtonLink } from "@/components/ui/button-link";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
