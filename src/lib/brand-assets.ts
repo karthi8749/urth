@@ -73,17 +73,12 @@ export function brandLogoSrc(
   variant: BrandLogoVariant = "primary",
   color: BrandColor = "cream",
 ) {
-  return withBasePath(
-    brandAsset(FOLDER[variant], COLOR_FILE[variant][color])
-  );
+  return brandAsset(FOLDER[variant], COLOR_FILE[variant][color]);
 }
 
 export function brandDotSrc() {
-  return withBasePath(
-    brandAsset(FOLDER.primary, "ORANGE DOT.svg")
-  );
+  return brandAsset(FOLDER.primary, "ORANGE DOT.svg");
 }
-
 export function brandPatternSrc(color: BrandColor = "orange") {
   const file =
     color === "cream"
