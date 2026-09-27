@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ButtonLink } from "@/components/ui/button-link";
-import { brandPatternSrc } from "@/lib/brand-assets";
+import { brandPatternCssUrl } from "@/lib/brand-assets";
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -76,7 +76,7 @@ export function Hero() {
         <div
           className="absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage: `url(${brandPatternSrc("orange")})`,
+            backgroundImage: `url(${brandPatternCssUrl("orange")})`,
             backgroundSize: "560px",
           }}
         />

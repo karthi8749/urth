@@ -1,26 +1,13 @@
 import { withBasePath } from "./paths";
 
-/**
- * Official URTH logo files from the brand package.
- * Served from: public/urthstudiobrandingpackage/… (copy of source package)
- * Source of truth: urthstudiobrandingpackage/URTH LOGO PACKAGE/
- */
 const PKG = "/urthstudiobrandingpackage/URTH LOGO PACKAGE";
 
 export type BrandLogoVariant =
-  | "primary"
-  | "secondary"
-  | "tertiary"
-  | "quaternary"
-  | "brandmark"
-  | "wordmark";
+  | "primary" | "secondary" | "tertiary" | "quaternary" | "brandmark" | "wordmark";
 
 export type BrandColor = "cream" | "orange" | "brown" | "blue";
 
-const COLOR_FILE: Record<
-  BrandLogoVariant,
-  Record<BrandColor, string>
-> = {
+const COLOR_FILE: Record<BrandLogoVariant, Record<BrandColor, string>> = {
   primary: {
     cream: "URTH_PRIMARY LOGO SOFT CREAM.svg",
     orange: "URTH_PRIMARY LOGO BOLD ORANGE.svg",
@@ -68,18 +55,12 @@ const FOLDER: Record<BrandLogoVariant, string> = {
   wordmark: "WORDMARK",
 };
 
-/**
- * Encode each path segment so spaces work in URLs, and prepend the
- * GitHub Pages basePath (e.g. /urth) so the file actually resolves.
- * withBasePath() is idempotent, so this stays safe even when the
- * result also passes through the custom next/image loader afterward.
- */
 export function brandAsset(...segments: string[]) {
-  return withBasePath(
+  return (
     "/" +
-      ["urthstudiobrandingpackage", "URTH LOGO PACKAGE", ...segments]
-        .map(encodeURIComponent)
-        .join("/"),
+    ["urthstudiobrandingpackage", "URTH LOGO PACKAGE", ...segments]
+      .map(encodeURIComponent)
+      .join("/")
   );
 }
 
@@ -87,12 +68,11 @@ export function brandLogoSrc(
   variant: BrandLogoVariant = "primary",
   color: BrandColor = "cream",
 ) {
-  return brandAsset(FOLDER[variant], COLOR_FILE[variant][color]);
+  return withBasePath(brandAsset(FOLDER[variant], COLOR_FILE[variant][color]));
 }
 
-/** The plain orange dot mark only exists in orange — used for the nav bar. */
 export function brandDotSrc() {
-  return brandAsset(FOLDER.primary, "ORANGE DOT.svg");
+  return withBasePath(brandAsset(FOLDER.primary, "ORANGE DOT.svg"));
 }
 
 export function brandPatternSrc(color: BrandColor = "orange") {
@@ -105,6 +85,10 @@ export function brandPatternSrc(color: BrandColor = "orange") {
           ? "URTH_BRAND PATTERN LIGHT BLUE.svg"
           : "URTH_BRAND PATTERN BOLD ORANGE.svg";
   return brandAsset("BRAND PATTERN", file);
+}
+
+export function brandPatternCssUrl(color: BrandColor = "orange") {
+  return withBasePath(brandPatternSrc(color));
 }
 
 export { PKG };
