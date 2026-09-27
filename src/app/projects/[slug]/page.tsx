@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ProjectImageCarousel } from "@/components/ui/project-image-carousel";
-import { withBasePath } from "@/lib/paths";
 import { getProject, projects } from "@/content/projects";
+import { withBasePath } from "@/lib/basePath";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -136,6 +136,23 @@ export default async function ProjectDetailPage({ params }: Props) {
         { label: "Service", value: "Design" },
       ],
     },
+    "contemporary-office-building": {
+      images: [
+        "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_01.png",
+        "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_02.png",
+        "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_04.jpg",
+        "/project-images/Contemporary Office Building/05.png",
+        "/project-images/Contemporary Office Building/06.png",
+      ],
+      details: [
+        { label: "Client", value: "financial institution" },
+        { label: "Location", value: "Abu Dhabi - UAE" },
+        { label: "Year", value: "2023" },
+        { label: "Size", value: "2500 sqmt" },
+        { label: "Category", value: "Workplace" },
+        { label: "Service", value: "Design" },
+      ],
+    },
   } as const;
 
   const gallery = projectGallery[project.slug as keyof typeof projectGallery];
@@ -170,6 +187,13 @@ export default async function ProjectDetailPage({ params }: Props) {
       image: "/project-images/Brand-Led FMCG Office/1.png",
       location: "MUMBAI - INDIA",
       title: "Brand-Led FMCG Office",
+    },
+
+        {
+      slug: "contemporary-office-building",
+      image: "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_01.png",
+      location: "Abu Dhabi - UAE",
+      title: "Contemporary Office Building",
     },
   ];
 

@@ -46,7 +46,6 @@ export function Logo({
       height={size.height}
       className={cn("h-auto w-auto object-contain", className)}
       priority
-      unoptimized
     />
   );
 
