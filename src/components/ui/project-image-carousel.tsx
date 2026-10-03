@@ -43,16 +43,16 @@ export function ProjectImageCarousel({
           <img
             src={withBasePath(images[previousIndex])}
             alt=""
-            className="absolute inset-0 h-[360px] w-full rounded-none object-contain scale-[1.03] opacity-0 transition-all duration-700 ease-out md:h-[520px]"
+            className="absolute inset-0 h-[360px] w-full rounded-none object-cover scale-[1.03] opacity-0 transition-all duration-700 ease-out md:h-[520px]"
           />
         )}
 
-        {/* Current image */}
+        {/* Current image - normal view */}
         <img
           src={withBasePath(images[currentIndex])}
           alt={`${title} gallery view ${currentIndex + 1}`}
           onClick={() => setIsFullscreen(true)}
-          className="relative h-[360px] w-full rounded-none object-contain scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px] cursor-zoom-in"
+          className="relative h-[360px] w-full rounded-none object-cover scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px] cursor-zoom-in"
         />
 
         {/* Previous button */}
@@ -122,7 +122,7 @@ export function ProjectImageCarousel({
             ‹
           </button>
 
-          {/* Full image */}
+          {/* Fullscreen image - NO CROP */}
           <img
             src={withBasePath(images[currentIndex])}
             alt={`${title} fullscreen view ${currentIndex + 1}`}
