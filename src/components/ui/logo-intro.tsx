@@ -208,7 +208,7 @@ export function LogoIntro() {
       >
         <svg
           viewBox="178 132 210 300"
-          className="h-auto w-44 object-contain md:w-52"
+          className="h-auto w-44 object-cover md:w-52"
           aria-label="URTH Studio"
         >
           <g ref={frameTextRef} fill="#fa4f01">

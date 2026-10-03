@@ -60,7 +60,7 @@ function ExpertiseCard({
             src={img}
             alt={pillar.title}
             fill
-            className="object-contain"
+            className="object-cover"
             style={{
               transform: isHovered ? "scale(1.1)" : "scale(1)",
               transition: "transform 700ms ease-out",

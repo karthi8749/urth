@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { withBasePath } from "@/lib/paths";
 
 export function ProjectImageCarousel({
@@ -14,17 +14,9 @@ export function ProjectImageCarousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Automatic image change every 3.5 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setPreviousIndex(currentIndex);
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3500);
-
-    return () => clearTimeout(timer);
-  }, [currentIndex, images.length]);
-
+  // Manual image change only
   const changeImage = (direction: 1 | -1) => {
     setPreviousIndex(currentIndex);
 
@@ -43,6 +35,7 @@ export function ProjectImageCarousel({
 
   return (
     <div className="mt-6 md:mt-8">
+      {/* Main Image Carousel */}
       <div className="relative mx-auto max-w-[1100px] overflow-hidden border border-cream/10 bg-ink/40 shadow-[0_30px_60px_rgba(0,0,0,0.35)]">
 
         {/* Previous image - fades out */}
@@ -54,13 +47,15 @@ export function ProjectImageCarousel({
           />
         )}
 
-        {/* Current image - fades in */}
+        {/* Current image */}
         <img
           src={withBasePath(images[currentIndex])}
           alt={`${title} gallery view ${currentIndex + 1}`}
-          className="relative h-[360px] w-full rounded-none object-contain scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px]"
+          onClick={() => setIsFullscreen(true)}
+          className="relative h-[360px] w-full rounded-none object-contain scale-100 opacity-100 transition-all duration-700 ease-out md:h-[520px] cursor-zoom-in"
         />
 
+        {/* Previous button */}
         <button
           type="button"
           aria-label="Previous image"
@@ -70,6 +65,7 @@ export function ProjectImageCarousel({
           ‹
         </button>
 
+        {/* Next button */}
         <button
           type="button"
           aria-label="Next image"
@@ -80,6 +76,7 @@ export function ProjectImageCarousel({
         </button>
       </div>
 
+      {/* Project Details */}
       <div className="mx-auto mt-6 max-w-[1100px] border-t border-cream/10 pt-4 md:mt-8 md:pt-5">
         <div className="grid grid-cols-2 gap-x-8 gap-y-4 md:grid-cols-6 md:gap-x-6 md:gap-y-5">
           {details.map((item) => (
@@ -95,6 +92,58 @@ export function ProjectImageCarousel({
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Image Viewer */}
+      {isFullscreen && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
+          onClick={() => setIsFullscreen(false)}
+        >
+          {/* Close button */}
+          <button
+            type="button"
+            aria-label="Close fullscreen"
+            onClick={() => setIsFullscreen(false)}
+            className="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center text-4xl text-white transition hover:text-gray-300"
+          >
+            ×
+          </button>
+
+          {/* Previous image */}
+          <button
+            type="button"
+            aria-label="Previous image"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToPrevious();
+            }}
+            className="absolute left-6 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-5xl text-white transition hover:text-gray-300"
+          >
+            ‹
+          </button>
+
+          {/* Full image */}
+          <img
+            src={withBasePath(images[currentIndex])}
+            alt={`${title} fullscreen view ${currentIndex + 1}`}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[95vh] max-w-[95vw] object-contain"
+          />
+
+          {/* Next image */}
+          <button
+            type="button"
+            aria-label="Next image"
+            onClick={(e) => {
+              e.stopPropagation();
+              goToNext();
+            }}
+            className="absolute right-6 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-5xl text-white transition hover:text-gray-300"
+          >
+            ›
+          </button>
+        </div>
+      )}
     </div>
   );
 }

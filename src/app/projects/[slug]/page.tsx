@@ -255,7 +255,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <img
                   src={withBasePath(p.image)}
                   alt={p.title}
-                  className="h-[420px] w-full object-contain"
+                  className="h-[420px] w-full object-cover"
                 />
               </div>
 

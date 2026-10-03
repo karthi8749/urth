@@ -44,7 +44,7 @@ export function Logo({
       alt="URTH Studio"
       width={size.width}
       height={size.height}
-      className={cn("h-auto w-auto object-contain", className)}
+      className={cn("h-auto w-auto object-cover", className)}
       priority
     />
   );

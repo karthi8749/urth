@@ -165,7 +165,7 @@ export default function AboutPageClient() {
                           width={320}
                           height={320}
                           priority={i === 0}
-                          className="h-auto w-full object-contain"
+                          className="h-auto w-full object-cover"
                           quality={90}
                         />
                       </div>
