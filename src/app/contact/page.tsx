@@ -18,8 +18,8 @@ export default function ContactPage() {
               <p className="text-lg uppercase tracking-[0.28em] text-sky md:text-xl">
                 Contact
               </p>
-              <h1 className="mt-4 font-display text-4xl tracking-tight text-cream md:text-6xl">
-                You Tell Us, We Listen.
+              <h1 className="mt-4 font-display text-4xl tracking-tight text-cream md:text-4xl">
+                Tell Us, We Listen.
               </h1>
               <p className="mt-6 max-w-md text-sm leading-relaxed text-cream/55">
                 No polished brief required. Tell us what you have, what you
