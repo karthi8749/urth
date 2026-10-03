@@ -221,7 +221,7 @@ export function ExpertiseHorizontalScroll() {
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 1024px) 288px, 320px"
               />
 
@@ -285,7 +285,7 @@ export function ExpertiseHorizontalScroll() {
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="100vw"
               />
 

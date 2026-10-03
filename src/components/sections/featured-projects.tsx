@@ -195,7 +195,7 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
                       src={project.featuredImage}
                       alt={project.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-contain transition-transform duration-700 group-hover:scale-105"
                       style={{ pointerEvents: "none" }}
                       sizes="(max-width: 768px) 82vw, 820px"
                       priority={i === 0}
