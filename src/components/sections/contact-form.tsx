@@ -84,6 +84,7 @@ export function ContactForm() {
         <label key={field.id} className="mb-8 block">
           <span className="text-[11px] uppercase tracking-[0.18em] text-cream/45">
             {field.label}
+            {field.required && <span className="ml-1 text-orange">*</span>}
           </span>
           <input
             id={field.id}

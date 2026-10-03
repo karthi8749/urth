@@ -86,7 +86,7 @@ export function SiteFooter() {
       </div>
 
       <div className="relative mx-auto flex max-w-[1600px] flex-col gap-4 border-t border-white/20 px-6 py-8 md:flex-row md:items-center md:justify-between md:gap-6 md:px-10">
-        <Logo variant="primary" color="orange" className="h-20 w-20 md:h-24 md:w-24" />
+        <Logo variant="primary" color="orange" className="h-20 w-auto md:h-24" />
         <p className="text-[11px] uppercase tracking-[0.18em] text-cream/35">
           © {new Date().getFullYear()} — URTH Studio
         </p>

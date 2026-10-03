@@ -32,10 +32,9 @@ function ExpertiseCard({
   const isDimmed = hovered !== null && hovered !== index;
 
   // Scroll-linked entrance: slides up from below the viewport into the grid.
-  const startScroll = index * 0.06;
-  const endScroll = startScroll + 0.18;
-  const y = useTransform(scrollYProgress, [startScroll, endScroll], ["40vh", "0vh"]);
-
+  const startScroll = index * 0.07;
+  const endScroll = startScroll + 0.28;
+  const y = useTransform(scrollYProgress, [startScroll, endScroll], ["70vh", "0vh"]);
   return (
     <motion.div style={{ y }}>
       <Link
@@ -137,7 +136,7 @@ export function ExpertisePreview() {
 
   return (
     // Height reduced to 200vh so there is zero delay/blank gap on scroll
-    <section ref={containerRef} className="relative h-[140vh] bg-ink">
+    <section ref={containerRef} className="relative h-[160vh] bg-ink">
       {/* Sticky Viewport */}
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-10">
         <div className="mx-auto w-full max-w-[1600px] px-6 md:px-10">

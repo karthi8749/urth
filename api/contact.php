@@ -9,7 +9,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 // --- Config (edit these) ---
-$to_email       = 'hello@urth.studio';   // Where enquiry emails are delivered
+$to_email       = 'Info@urthdesign.com';   // Where enquiry emails are delivered
 $from_email     = 'noreply@urth.studio'; // Must be a domain mailbox on this server when possible
 $from_name      = 'URTH Website';
 $subject_prefix = 'URTH enquiry';
