@@ -8,6 +8,7 @@ import { OverlayMenu } from "@/components/layout/overlay-menu";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LogoIntro } from "@/components/ui/logo-intro";
 import "./globals.css";
+import { DotCursor } from "@/components/ui/dot-cursor";
 
 const display = Syne({
   variable: "--font-display",
@@ -47,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${body.variable} min-h-screen bg-brown text-cream antialiased`}
+      className={`${display.variable} ${body.variable} min-h-screen bg-brown text-cream antialiased`}
       >
         <HomepageIntroProvider>
           <LogoIntro />
