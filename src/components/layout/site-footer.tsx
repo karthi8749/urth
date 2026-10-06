@@ -73,10 +73,10 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-cream/70 transition-colors hover:text-orange"
-                >
+    <Link
+      href={link.label === "Expertise" ? "/expertise#expertise" : link.href}
+      className="text-sm text-cream/70 transition-colors hover:text-orange"
+    >
                   {link.label}
                 </Link>
               </li>
