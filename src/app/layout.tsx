@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { OverlayMenu } from "@/components/layout/overlay-menu";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LogoIntro } from "@/components/ui/logo-intro";
+import { DotCursor } from "@/components/ui/dot-cursor";
 import "./globals.css";
 
 const display = Syne({
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${body.variable} min-h-screen bg-brown text-cream antialiased`}
       >
+        <DotCursor />
         <HomepageIntroProvider>
           <LogoIntro />
           <NavProvider>

@@ -167,13 +167,13 @@ export default async function ProjectDetailPage({ params }: Props) {
     {
       slug: "corporate-office",
       image: "/project-images/Contemporary Corporate Office/1.png",
-      location: "CHENNAI - INDIA",
+      location: "DUBAI",
       title: "Contemporary Corporate Office",
     },
     {
       slug: "healthcare-wayfinding",
       image: "/project-images/Patient-Centred Healthcare & Wayfinding Design/1.png",
-      location: "PUNE - INDIA",
+      location: "ABU DHABI - UAE",
       title: "Patient-Centred Healthcare & Wayfinding Design",
     },
     {
@@ -185,14 +185,14 @@ export default async function ProjectDetailPage({ params }: Props) {
     {
       slug: "fmcg-office",
       image: "/project-images/Brand-Led FMCG Office/1.png",
-      location: "MUMBAI - INDIA",
+      location: "DUBAI",
       title: "Brand-Led FMCG Office",
     },
 
         {
       slug: "contemporary-office-building",
       image: "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_01.png",
-      location: "Abu Dhabi - UAE",
+      location: "ABU DHABI - UAE",
       title: "Contemporary Office Building",
     },
   ];

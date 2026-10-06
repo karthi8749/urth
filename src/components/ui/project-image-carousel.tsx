@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { withBasePath } from "@/lib/paths";
 
 export function ProjectImageCarousel({
@@ -60,9 +61,9 @@ export function ProjectImageCarousel({
           type="button"
           aria-label="Previous image"
           onClick={goToPrevious}
-          className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-cream/20 bg-black/30 text-xl text-cream transition hover:bg-black/50"
+          className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-[0_4px_24px_rgba(0,0,0,0.6)] backdrop-blur-md transition duration-200 hover:scale-110 hover:border-orange hover:bg-orange md:left-6 md:h-12 md:w-12"
         >
-          ‹
+          <ChevronLeft className="size-5 md:size-6" strokeWidth={2.25} />
         </button>
 
         {/* Next button */}
@@ -70,9 +71,9 @@ export function ProjectImageCarousel({
           type="button"
           aria-label="Next image"
           onClick={goToNext}
-          className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-cream/20 bg-black/30 text-xl text-cream transition hover:bg-black/50"
+          className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-[0_4px_24px_rgba(0,0,0,0.6)] backdrop-blur-md transition duration-200 hover:scale-110 hover:border-orange hover:bg-orange md:right-6 md:h-12 md:w-12"
         >
-          ›
+          <ChevronRight className="size-5 md:size-6" strokeWidth={2.25} />
         </button>
       </div>
 
@@ -96,7 +97,7 @@ export function ProjectImageCarousel({
       {/* Fullscreen Image Viewer */}
       {isFullscreen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
+          className="fixed inset-0 z-[9990] flex items-center justify-center bg-black/95"
           onClick={() => setIsFullscreen(false)}
         >
           {/* Close button */}
@@ -104,9 +105,9 @@ export function ProjectImageCarousel({
             type="button"
             aria-label="Close fullscreen"
             onClick={() => setIsFullscreen(false)}
-            className="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center text-4xl text-white transition hover:text-gray-300"
+            className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-[0_4px_24px_rgba(0,0,0,0.6)] backdrop-blur-md transition duration-200 hover:scale-110 hover:border-orange hover:bg-orange md:right-8 md:top-8 md:h-14 md:w-14"
           >
-            ×
+            <X className="size-6 md:size-7" strokeWidth={2.25} />
           </button>
 
           {/* Previous image */}
@@ -117,9 +118,9 @@ export function ProjectImageCarousel({
               e.stopPropagation();
               goToPrevious();
             }}
-            className="absolute left-6 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-5xl text-white transition hover:text-gray-300"
+            className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-[0_4px_24px_rgba(0,0,0,0.6)] backdrop-blur-md transition duration-200 hover:scale-110 hover:border-orange hover:bg-orange md:left-8 md:h-14 md:w-14"
           >
-            ‹
+            <ChevronLeft className="size-6 md:size-7" strokeWidth={2.25} />
           </button>
 
           {/* Fullscreen image - NO CROP */}
@@ -138,9 +139,9 @@ export function ProjectImageCarousel({
               e.stopPropagation();
               goToNext();
             }}
-            className="absolute right-6 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-5xl text-white transition hover:text-gray-300"
+            className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-[0_4px_24px_rgba(0,0,0,0.6)] backdrop-blur-md transition duration-200 hover:scale-110 hover:border-orange hover:bg-orange md:right-8 md:h-14 md:w-14"
           >
-            ›
+            <ChevronRight className="size-6 md:size-7" strokeWidth={2.25} />
           </button>
         </div>
       )}

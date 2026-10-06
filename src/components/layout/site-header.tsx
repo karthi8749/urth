@@ -85,11 +85,12 @@ export function SiteHeader() {
         )}
       >
         <div className="group/logo rounded-full p-2 transition-all duration-300 hover:shadow-[0_0_32px_10px_rgba(250,79,1,0.45)] hover:bg-orange/10">
-          <Logo
-            variant="dot"
-            onClick={() => setOpen(true)}
-            className="h-12 w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover/logo:scale-105"
-          />
+<Logo
+  variant="dot"
+  onClick={toggle}
+  ariaLabel={open ? "Close menu" : "Open menu"}
+  className="h-12 w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover/logo:scale-105"
+/>
         </div>
       </div>
 

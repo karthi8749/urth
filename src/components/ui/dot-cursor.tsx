@@ -57,7 +57,7 @@ export function DotCursor() {
         transform: `translate3d(${position.x}px, ${position.y}px, 0px) translate(-50%, -50%) scale(${isHovered ? 2.2 : 1})`,
       }}
       className={`fixed top-0 left-0 z-[9999] h-2.5 w-2.5 rounded-full pointer-events-none mix-blend-difference transition-transform duration-100 ease-out ${
-        isHovered ? "bg-white" : "bg-orange-500"
+        isHovered ? "bg-white" : "bg-orange"
       }`}
     />
   );

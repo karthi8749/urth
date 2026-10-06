@@ -16,6 +16,8 @@ type LogoProps = {
   className?: string;
   href?: string;
   onClick?: () => void;
+  /** Accessible label used when the logo acts as a button (onClick set). */
+  ariaLabel?: string;
 };
 
 const sizes: Record<BrandLogoVariant, { width: number; height: number }> = {
@@ -33,6 +35,7 @@ export function Logo({
   className,
   href = "/",
   onClick,
+  ariaLabel = "Open menu",
 }: LogoProps) {
   const isDot = variant === "dot";
   const size = isDot ? { width: 120, height: 120 } : sizes[variant];
@@ -54,7 +57,7 @@ export function Logo({
       <button
         type="button"
         onClick={onClick}
-        aria-label="Open menu"
+        aria-label={ariaLabel}
         className="inline-flex items-center"
       >
         {image}
