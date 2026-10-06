@@ -6,7 +6,7 @@ type Variant = "pop" | "fly" | "shrink" | "burst" | "trail" | "logo";
 
 // Change this one word to switch animation:
 // "pop" | "fly" | "shrink" | "burst" | "trail" | "logo"
-const VARIANT: Variant = "fly";
+const VARIANT: Variant = "burst";
 
 const SPARK_COUNT = 8;
 
