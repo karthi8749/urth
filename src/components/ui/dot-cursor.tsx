@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 export function DotCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
-  const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,29 +21,10 @@ export function DotCursor() {
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
 
-    const hoverTargets = new WeakSet<Element>();
-    const addHoverEvents = () => {
-      const targetElements = document.querySelectorAll(
-        'a, button, input, textarea, select, [role="button"], .hover-target',
-      );
-      targetElements.forEach((el) => {
-        if (hoverTargets.has(el)) return;
-        hoverTargets.add(el);
-        el.addEventListener("mouseenter", () => setIsHovered(true));
-        el.addEventListener("mouseleave", () => setIsHovered(false));
-      });
-    };
-
-    addHoverEvents();
-
-    const observer = new MutationObserver(addHoverEvents);
-    observer.observe(document.body, { childList: true, subtree: true });
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
-      observer.disconnect();
     };
   }, []);
 
@@ -54,11 +34,9 @@ export function DotCursor() {
     <div
       aria-hidden="true"
       style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0px) translate(-50%, -50%) scale(${isHovered ? 2.2 : 1})`,
+        transform: `translate3d(${position.x}px, ${position.y}px, 0px) translate(-50%, -50%)`,
       }}
-      className={`fixed top-0 left-0 z-[9999] h-2.5 w-2.5 rounded-full pointer-events-none mix-blend-difference transition-transform duration-100 ease-out ${
-        isHovered ? "bg-white" : "bg-orange"
-      }`}
+      className="pointer-events-none fixed left-0 top-0 z-[9999] h-2.5 w-2.5 rounded-full bg-[#FA4F01]"
     />
   );
 }
