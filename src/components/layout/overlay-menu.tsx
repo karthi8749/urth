@@ -56,11 +56,11 @@ export function OverlayMenu() {
                         href={link.href}
                         onClick={() => setOpen(false)}
                         className={cn(
-                          "group flex items-baseline gap-4 text-4xl font-medium uppercase tracking-[-0.02em] text-cream transition-colors md:text-6xl lg:text-7xl",
+                          "group flex items-baseline gap-4 text-4xl font-light uppercase tracking-[-0.02em] text-cream transition-colors md:text-6xl lg:text-7xl",
                           active ? "text-orange" : "hover:text-orange",
                         )}
                       >
-                        <span className="font-display text-[0.35em] text-sky/70">
+                        <span className="text-[0.35em] text-sky/70">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {link.label}

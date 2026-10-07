@@ -19,7 +19,7 @@ const display = Syne({
 const body = Figtree({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -50,8 +50,8 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${body.variable} min-h-screen bg-brown text-cream antialiased`}
       >
-        <DotCursor />
         <HomepageIntroProvider>
+          <DotCursor />
           <LogoIntro />
           <NavProvider>
             <SmoothScroll>

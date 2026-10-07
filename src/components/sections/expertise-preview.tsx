@@ -132,7 +132,7 @@ export function ExpertisePreview() {
   // Track scroll progress through the pinned section
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ["start 50vh", "start -50vh"]
   });
 
   return (
