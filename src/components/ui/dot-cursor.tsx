@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useIntro } from "@/components/providers/homepage-intro-provider";
 
 type Variant = "pop" | "fly" | "shrink" | "burst" | "trail" | "logo";
 
@@ -11,12 +12,16 @@ const VARIANT: Variant = "trail";
 const SPARK_COUNT = 8;
 
 export function DotCursor() {
+  // Don't show the cursor dot during the landing-page loading intro.
+  const { isIntroComplete } = useIntro();
+
   const wrapRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
   const sparkRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    if (!isIntroComplete) return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const wrap = wrapRef.current;
@@ -227,7 +232,7 @@ export function DotCursor() {
       cancelAnimationFrame(frame);
       cancelAnimationFrame(loopFrame);
     };
-  }, []);
+  }, [isIntroComplete]);
 
   return (
     <div
