@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const accents = {
-  orange: "from-orange/50 via-brown to-ink",
-  blue: "from-sky/40 via-brown to-ink",
+  orange: "from-cream/50 via-brown to-ink",
+  blue: "from-cream/40 via-brown to-ink",
   cream: "from-cream/30 via-brown to-ink",
 };
 
