@@ -175,6 +175,7 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
               <Link
                 ref={(el) => { linkRefs.current[i] = el; }}
                 href={`/projects/${project.slug}`}
+                data-cursor-merge="text"
                 className="group block h-full w-full"
                 tabIndex={0}
                 aria-label={`Open ${project.title} project page`}
@@ -268,6 +269,7 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
           >
             <Link
               href="/projects"
+              data-cursor-merge="text"
               className="group block h-full w-full"
               tabIndex={0}
               aria-label="View all projects"

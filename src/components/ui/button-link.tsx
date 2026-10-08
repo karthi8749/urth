@@ -20,12 +20,13 @@ export function ButtonLink({
   return (
     <Link
       href={href}
+      data-cursor-merge={variant === "outline" ? "" : "text"}
       className={cn(
-        "group inline-flex items-center gap-3 border px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] transition-colors duration-300",
+        "group relative inline-flex items-center gap-3 border px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] transition-colors duration-300",
         variant === "solid" &&
           "border-orange bg-orange text-cream hover:bg-cream hover:text-brown hover:border-cream",
         variant === "outline" &&
-          "border-cream/40 text-cream hover:border-orange hover:text-orange",
+          "border-cream/40 text-cream hover:border-orange hover:text-cream",
         variant === "ghost" &&
           "border-transparent text-cream hover:text-orange",
         className,

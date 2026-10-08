@@ -79,3 +79,24 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(255, 237, 227, 0.45);
 }
+
+/* Cursor-merge: orange fill grows from the point the cursor entered.
+   data-cursor-merge        -> boxed fill (buttons, needs relative/absolute)
+   data-cursor-merge="text" -> dot just hides, no fill (links / text) */
+[data-cursor-merge]:not([data-cursor-merge="text"]) {
+  /* element must be positioned (Tailwind "relative" / "absolute") */
+  overflow: hidden;
+  isolation: isolate;
+}
+[data-cursor-merge]:not([data-cursor-merge="text"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--orange);
+  clip-path: circle(0px at var(--mx, 50%) var(--my, 50%));
+  transition: clip-path 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-cursor-merge]:not([data-cursor-merge="text"])[data-cursor-merged]::before {
+  clip-path: circle(150% at var(--mx, 50%) var(--my, 50%));
+}

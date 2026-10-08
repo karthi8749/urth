@@ -36,6 +36,7 @@ export default function ProjectsPage() {
             <Reveal key={project.slug} delay={(i % 2) * 0.08}>
               <Link
                 href={`/projects/${project.slug}`}
+                data-cursor-merge="text"
                 className="group block overflow-hidden"
               >
                 <div

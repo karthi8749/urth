@@ -37,6 +37,8 @@ export function DotCursor() {
 
     let visible = false;
     let settled = false;
+    let merged: HTMLElement | null = null;
+    let fast = false;
     let timer = 0;
     let frame = 0;
     let loopFrame = 0;
@@ -57,7 +59,8 @@ export function DotCursor() {
     // Smooth follow loop (used by "trail" and "logo")
     const loop = () => {
       if (!visible) return;
-      const f = VARIANT === "trail" ? 0.16 : settled ? 1 : 0.08;
+      const f =
+        VARIANT === "trail" ? 0.16 : settled ? 1 : fast ? 0.28 : 0.08;
       cur.x += (tgt.x - cur.x) * f;
       cur.y += (tgt.y - cur.y) * f;
       if (
@@ -66,12 +69,16 @@ export function DotCursor() {
         Math.abs(tgt.x - cur.x) + Math.abs(tgt.y - cur.y) < 2
       ) {
         settled = true;
+        fast = false;
       }
       place(cur.x, cur.y);
       loopFrame = requestAnimationFrame(loop);
     };
 
     const reset = () => {
+      merged?.removeAttribute("data-cursor-merged");
+      merged = null;
+      fast = false;
       window.clearTimeout(timer);
       cancelAnimationFrame(frame);
       cancelAnimationFrame(loopFrame);
@@ -203,6 +210,45 @@ export function DotCursor() {
       }
     };
 
+    // Dot melts into a [data-cursor-merge] element at the point where it
+    // entered; the element's orange fill then expands from that exact point
+    // (CSS clip-path in globals.css) until the whole shape is one.
+    const setOrigin = (el: HTMLElement, x: number, y: number) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${x - r.left}px`);
+      el.style.setProperty("--my", `${y - r.top}px`);
+    };
+
+    const mergeInto = (el: HTMLElement, x: number, y: number) => {
+      merged = el;
+      setOrigin(el, x, y);
+      el.setAttribute("data-cursor-merged", "");
+      // dot stays at the entry point and dissolves into the growing fill
+      tgt.x = x;
+      tgt.y = y;
+      // hide the dot instantly (no scale-up) so no orange leaks outside the shape
+      dot.style.transition = "opacity 70ms linear";
+      dot.style.transform = "scale(1)";
+      dot.style.opacity = "0";
+    };
+
+    const unmerge = (x: number, y: number) => {
+      if (merged) {
+        setOrigin(merged, x, y); // fill shrinks back toward the exit point
+        merged.removeAttribute("data-cursor-merged");
+      }
+      merged = null;
+      cur.x = x;
+      cur.y = y;
+      tgt.x = x;
+      tgt.y = y;
+      place(x, y);
+      dot.style.transition =
+        "transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 200ms ease-out";
+      dot.style.transform = "scale(1)";
+      dot.style.opacity = "1";
+    };
+
     const hide = () => {
       visible = false;
       reset();
@@ -215,8 +261,17 @@ export function DotCursor() {
         return;
       }
       if (follows) {
-        tgt.x = e.clientX;
-        tgt.y = e.clientY;
+        const el = (e.target as Element | null)?.closest?.(
+          "[data-cursor-merge]",
+        ) as HTMLElement | null;
+        if (el) {
+          if (el !== merged) mergeInto(el, e.clientX, e.clientY);
+        } else if (merged) {
+          unmerge(e.clientX, e.clientY);
+        } else {
+          tgt.x = e.clientX;
+          tgt.y = e.clientY;
+        }
       } else {
         place(e.clientX, e.clientY);
       }

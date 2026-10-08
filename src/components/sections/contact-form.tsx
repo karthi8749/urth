@@ -112,6 +112,7 @@ export function ContactForm() {
 
       <button
         type="submit"
+        data-cursor-merge="text"
         disabled={status === "loading"}
         className="inline-flex items-center border border-orange bg-orange px-8 py-3 text-xs font-medium uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream hover:border-cream hover:text-brown disabled:opacity-60"
       >

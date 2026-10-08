@@ -44,6 +44,7 @@ export function SiteFooter() {
           </p>
           <a
             href="mailto:Info@urthdesign.com"
+            data-cursor-merge="text"
             className="mt-4 block text-cream transition-colors hover:text-orange"
           >
             Info@urthdesign.com
@@ -56,11 +57,11 @@ export function SiteFooter() {
             Follow
           </p>
           <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-cream/70">
-            <a href="#" className="hover:text-orange">
+            <a href="#" data-cursor-merge="text" className="hover:text-orange">
               LinkedIn
             </a>
             <span className="text-cream/25">|</span>
-            <a target="_blank" href="https://www.instagram.com/urth_made/" className="hover:text-orange">
+            <a target="_blank" href="https://www.instagram.com/urth_made/" data-cursor-merge="text" className="hover:text-orange">
               Instagram
             </a>
           </div>
@@ -75,6 +76,7 @@ export function SiteFooter() {
               <li key={link.href}>
     <Link
       href={link.label === "Expertise" ? "/expertise#expertise" : link.href}
+      data-cursor-merge="text"
       className="text-sm text-cream/70 transition-colors hover:text-orange"
     >
                   {link.label}
