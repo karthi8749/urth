@@ -41,7 +41,12 @@ export function JourneyInteractive() {
     // Once the card has appeared, put the card you just opened in the
     // CENTER of the screen so it can be read comfortably.
     setTimeout(() => {
-      const target = document.getElementById(`journey-step-${index}`);
+      // Desktop + mobile both render this step; pick the one that is visible.
+      const target = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          `[data-journey-step="${index}"]`,
+        ),
+      ).find((el) => el.offsetParent !== null);
       if (target) {
         target.scrollIntoView({
           behavior: prefersReducedMotion ? "auto" : "smooth",
@@ -148,6 +153,7 @@ function DesktopJourney({
           <div
             key={index}
             id={`journey-step-${index}`}
+            data-journey-step={index}
             className={`relative flex scroll-mt-40 items-start gap-0 py-10 ${
               side === "right" ? "flex-row-reverse" : "flex-row"
             }`}
@@ -208,87 +214,91 @@ function MobileJourney({
   onNodeClick,
   prefersReducedMotion,
 }: JourneyProps) {
+  // Same idea as desktop: every card is ALWAYS rendered (so each row keeps its
+  // final height and the page never jumps), but hidden until its dot is clicked.
+  // Node column is 44px wide -> spine runs through the node centre (22px).
   return (
     <div className="relative">
-      {/* Spine */}
-      <div className="absolute left-4 top-0 h-full w-px bg-cream/15" />
+      {journeySteps.map((step, index) => {
+        const isRevealed = index <= activeStep;
+        const isNext = index === nextStep;
+        const isCompleted = index < activeStep;
+        const isUpcoming = index > nextStep;
+        const isLast = index === journeySteps.length - 1;
 
-      {/* Orange progress */}
-      <motion.div
-        className="absolute left-4 top-0 w-px origin-top bg-orange"
-        style={{ height: "100%" }}
-        initial={{ scaleY: 0 }}
-        animate={{
-          scaleY:
-            activeStep >= 0 ? (activeStep + 1) / journeySteps.length : 0,
-        }}
-        transition={{
-          duration: prefersReducedMotion ? 0 : 0.7,
-          ease,
-        }}
-      />
-
-      <div className="space-y-10 pl-12">
-        {journeySteps.map((step, index) => {
-          const isRevealed = index <= activeStep;
-          const isNext = index === nextStep;
-          const isCompleted = index < activeStep;
-          const isUpcoming = index > nextStep;
-
-          return (
-            <div
-              key={index}
-              id={`journey-step-${index}`}
-              className="relative scroll-mt-28"
-            >
-              {/* Node on spine */}
-              <div className="absolute -left-12 top-1">
-                <Node
-                  index={index}
-                  isNext={isNext}
-                  isCompleted={isCompleted}
-                  isUpcoming={isUpcoming}
-                  isRevealed={isRevealed}
-                  onClick={() => onNodeClick(index)}
-                  prefersReducedMotion={prefersReducedMotion}
-                />
-              </div>
-
-              {/* Step number always visible */}
-              <p
-                className={`mb-3 text-[11px] tracking-widest transition-colors duration-300 ${
-                  isNext
-                    ? "text-orange"
-                    : isRevealed
-                    ? "text-orange/60"
-                    : "text-cream/25"
-                }`}
-              >
-                {String(index).padStart(2, "0")}
-              </p>
-
-              {/* Card (mobile keeps the collapsing height so there is no big empty gap) */}
-              {isRevealed && (
+        return (
+          <div
+            key={index}
+            data-journey-step={index}
+            className="relative scroll-mt-28 pb-12 pl-16"
+          >
+            {/* Spine segment: this node centre -> next node centre */}
+            {!isLast && (
+              <>
+                <div className="absolute left-[22px] top-[22px] bottom-[-22px] w-px bg-cream/15" />
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
+                  className="absolute left-[22px] top-[22px] bottom-[-22px] w-px origin-top bg-orange"
+                  initial={false}
+                  animate={{ scaleY: isCompleted ? 1 : 0 }}
                   transition={{
-                    duration: prefersReducedMotion ? 0 : 0.45,
+                    duration: prefersReducedMotion ? 0 : 0.7,
                     ease,
                   }}
-                  className="overflow-hidden"
-                >
-                  <StepCard
-                    step={step}
-                    revealed={isRevealed}
-                    prefersReducedMotion={prefersReducedMotion}
-                  />
-                </motion.div>
-              )}
+                />
+              </>
+            )}
+
+            {/* Node on spine */}
+            <div className="absolute left-0 top-0">
+              <Node
+                index={index}
+                isNext={isNext}
+                isCompleted={isCompleted}
+                isUpcoming={isUpcoming}
+                isRevealed={isRevealed}
+                onClick={() => onNodeClick(index)}
+                prefersReducedMotion={prefersReducedMotion}
+                showLabel={false}
+              />
             </div>
-          );
-        })}
-      </div>
+
+            {/* Step number, vertically centred with the node */}
+            <p
+              className={`mb-4 flex h-11 items-center text-[11px] tracking-widest transition-colors duration-300 ${
+                isNext
+                  ? "text-orange"
+                  : isRevealed
+                  ? "text-orange/60"
+                  : "text-cream/25"
+              }`}
+            >
+              {String(index).padStart(2, "0")}
+            </p>
+
+            {/* Card: fades + slides in, no height change */}
+            <motion.div
+              initial={false}
+              animate={{
+                opacity: isRevealed ? 1 : 0,
+                y: isRevealed ? 0 : 24,
+              }}
+              transition={{
+                duration: prefersReducedMotion ? 0 : 0.55,
+                ease,
+              }}
+              style={{ pointerEvents: isRevealed ? "auto" : "none" }}
+              aria-hidden={!isRevealed}
+              {...(!isRevealed ? { inert: true as unknown as undefined } : {})}
+            >
+              <StepCard
+                step={step}
+                revealed={isRevealed}
+                prefersReducedMotion={prefersReducedMotion}
+              />
+            </motion.div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -303,6 +313,7 @@ interface NodeProps {
   isRevealed: boolean;
   onClick: () => void;
   prefersReducedMotion: boolean;
+  showLabel?: boolean;
 }
 
 function Node({
@@ -313,6 +324,7 @@ function Node({
   isRevealed,
   onClick,
   prefersReducedMotion,
+  showLabel = true,
 }: NodeProps) {
   return (
     <button
@@ -320,7 +332,7 @@ function Node({
       onClick={onClick}
       disabled={!isNext}
       aria-label={`Step ${String(index).padStart(2, "0")}`}
-      className="relative flex h-14 w-14 items-center justify-center disabled:cursor-default"
+      className="relative flex h-11 w-11 items-center justify-center disabled:cursor-default lg:h-14 lg:w-14"
     >
       {/* Glow rings — only on next step */}
       {isNext && !prefersReducedMotion && (
@@ -361,9 +373,11 @@ function Node({
       />
 
       {/* Number label above */}
-      <span className="pointer-events-none absolute -top-6 text-[10px] tracking-widest text-cream/40">
-        {String(index).padStart(2, "0")}
-      </span>
+      {showLabel && (
+        <span className="pointer-events-none absolute -top-6 text-[10px] tracking-widest text-cream/40">
+          {String(index).padStart(2, "0")}
+        </span>
+      )}
     </button>
   );
 }
@@ -390,7 +404,7 @@ function StepCard({
   });
 
   return (
-    <div className="rounded-sm border border-cream/10 bg-ink p-8">
+    <div className="rounded-sm border border-cream/10 bg-ink p-6 md:p-8">
       <motion.p className="font-display text-5xl text-orange" {...item(0.08)}>
         {String(step.step).padStart(2, "0")}
       </motion.p>
