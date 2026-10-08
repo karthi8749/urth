@@ -95,7 +95,7 @@ html {
   z-index: -1;
   background: var(--orange);
   clip-path: circle(0px at var(--mx, 50%) var(--my, 50%));
-  transition: clip-path 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: clip-path 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 [data-cursor-merge]:not([data-cursor-merge="text"])[data-cursor-merged]::before {
   clip-path: circle(150% at var(--mx, 50%) var(--my, 50%));
