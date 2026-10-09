@@ -112,9 +112,9 @@ export function ContactForm() {
 
       <button
         type="submit"
-        data-cursor-merge="text"
+        data-cursor-merge=""
         disabled={status === "loading"}
-        className="inline-flex items-center border border-cream bg-cream px-8 py-3 text-xs font-medium uppercase tracking-[0.18em] text-brown transition-colors duration-300 hover:border-orange hover:bg-orange hover:text-cream disabled:opacity-60"
+        className="relative inline-flex items-center border border-cream bg-cream px-8 py-3 text-xs font-medium uppercase tracking-[0.18em] text-brown transition-colors duration-300 hover:border-orange hover:text-cream disabled:opacity-60"
       >
         {status === "loading"
           ? "Sending…"

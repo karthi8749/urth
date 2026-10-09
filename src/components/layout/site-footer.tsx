@@ -32,9 +32,9 @@ export function SiteFooter() {
             <ButtonLink href="/contact" variant="solid">
               Enquire Now
             </ButtonLink>
-            <span className="inline-flex items-center gap-2 rounded-sm border border-cream/40 bg-transparent px-6 py-3 text-sm uppercase tracking-[0.18em] text-cream transition-colors">
+            {/* <span className="inline-flex items-center gap-2 rounded-sm border border-cream/40 bg-transparent px-6 py-3 text-sm uppercase tracking-[0.18em] text-cream transition-colors">
               JOIN US
-            </span>
+            </span> */}
           </div>
         </div>
 
