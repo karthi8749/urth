@@ -23,7 +23,10 @@ const accentHex: Record<string, string> = {
   cream: "#ffede3",
 };
 
-const PEEK_X = 200;       // px offset per depth level
+const PEEK_X_DESKTOP = 200; // px offset per depth level
+const PEEK_X_MOBILE = 36;   // small peek on phones
+// ONE colour for every project's location label + left bar
+const ACCENT = "#fa4f01";      // px offset per depth level
 const PEEK_SCALE = 0.88;  // scale step per depth level
 
 export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
@@ -42,6 +45,9 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
     if (!section || animEls.length === 0) return;
 
     const n = animEls.length;
+    const PEEK_X = window.matchMedia("(max-width: 767px)").matches
+  ? PEEK_X_MOBILE
+  : PEEK_X_DESKTOP;
     const PX_PER_STEP = 900; // scroll distance for moving ONE card
 
     // gsap.context tracks everything created inside, and ctx.revert()
@@ -154,12 +160,11 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
           <div
             key={project.slug}
             ref={(el) => { if (el) wrapRefs.current[i] = el; }}
-            className="absolute top-0"
+            className="absolute top-0 aspect-[4/3] md:aspect-[2/1]"
             style={{
               left: "50%",
               transform: "translateX(-50%)",
               width: "min(820px, 82vw)",
-              aspectRatio: "2 / 1",
               pointerEvents: "none",
             }}
           >
@@ -216,7 +221,7 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
                   {/* Left accent bar */}
                   <div
                     className="absolute left-0 top-0 h-full w-0.75"
-                    style={{ pointerEvents: "none", backgroundColor: accentHex[project.accent] }}
+                    style={{ pointerEvents: "none", backgroundColor: ACCENT }}
                   />
 
                   {/* Text gradient */}
@@ -230,14 +235,14 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
                   />
 
                   {/* Text — bottom left */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10" style={{ pointerEvents: "none" }}>
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-10" style={{ pointerEvents: "none" }}>
                     <p
                       className="text-[10px] uppercase tracking-[0.3em]"
-                      style={{ color: accentHex[project.accent], opacity: 0.9 }}
+                      style={{ color: ACCENT, opacity: 0.9 }}
                     >
                       {project.location || ""}
                     </p>
-                    <h3 className="mt-3 font-display text-2xl leading-tight text-cream transition-colors group-hover:text-orange md:text-3xl lg:text-4xl">
+                    <h3 className="mt-2 font-display text-xl leading-tight md:mt-3 text-cream transition-colors group-hover:text-orange md:text-3xl lg:text-4xl">
                       {project.title}&nbsp;
                       <span className="inline-block transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                         ↗
@@ -253,12 +258,11 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
         {/* More Projects Button Card */}
         <div
           ref={(el) => { if (el) wrapRefs.current[items.length] = el; }}
-          className="absolute top-0"
+          className="absolute top-0 aspect-[4/3] md:aspect-[2/1]"
           style={{
             left: "50%",
             transform: "translateX(-50%)",
             width: "min(820px, 82vw)",
-            aspectRatio: "2 / 1",
             pointerEvents: "none",
           }}
         >
@@ -292,7 +296,7 @@ export function FeaturedProjects({ limit = 5 }: { limit?: number }) {
 
                 {/* Center button text */}
                 <div className="text-center" style={{ pointerEvents: "none" }}>
-                  <p className="font-display text-4xl md:text-5xl lg:text-6xl text-cream transition-colors group-hover:text-orange">
+                  <p className="font-display text-3xl md:text-5xl lg:text-6xl text-cream transition-colors group-hover:text-orange">
                     More Projects
                   </p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-cream/60 mt-4">

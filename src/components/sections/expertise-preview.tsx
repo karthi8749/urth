@@ -40,13 +40,12 @@ function ExpertiseCard({
     <motion.div style={{ y }}>
       <Link
         href={`/expertise#${pillar.id}`}
-        onMouseEnter={() => setHovered(index)}
-        onMouseLeave={() => setHovered(null)}
+onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(index)}
+onPointerLeave={(e) => e.pointerType === "mouse" && setHovered(null)}
         onFocus={() => setHovered(index)}
         onBlur={() => setHovered(null)}
-        className="relative block overflow-hidden"
+        className="relative block aspect-[4/5] overflow-hidden md:aspect-[3/4]"
         style={{
-          aspectRatio: "3 / 4",
           border: "1px solid rgba(255,255,255,0.15)",
           transform: isHovered ? "scale(1.25)" : "scale(1)",
           zIndex: isHovered ? 10 : 1,
@@ -143,14 +142,14 @@ export function ExpertisePreview() {
         <div className="mx-auto w-full max-w-[1600px] px-6 md:px-10">
 
           {/* Header */}
-          <div className="mb-10 text-center">
+          <div className="mb-6 text-center md:mb-10">
             <p className="text-xs uppercase tracking-[0.32em] text-sky md:text-sm">
               OUR EXPERTISE
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {expertisePillars.map((pillar, i) => (
               <ExpertiseCard
                 key={pillar.id}
@@ -164,7 +163,7 @@ export function ExpertisePreview() {
           </div>
 
           {/* CTA Button */}
-          <div className="mt-10 text-center">
+          <div className="mt-6 text-center md:mt-10">
             <ButtonLink href="/expertise#expertise">
               Explore Expertise
             </ButtonLink>

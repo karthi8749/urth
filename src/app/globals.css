@@ -23,6 +23,7 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: auto;
   /* Always reserve the scrollbar's width, even when it's not needed
      (e.g. while the loading intro sets overflow:hidden). Without this,

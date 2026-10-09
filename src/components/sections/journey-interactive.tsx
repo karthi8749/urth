@@ -148,6 +148,7 @@ function DesktopJourney({
         const isNext = index === nextStep;
         const isCompleted = index < activeStep;
         const isUpcoming = index > nextStep;
+        const isLast = index === journeySteps.length - 1;
 
         return (
           <div
@@ -158,6 +159,19 @@ function DesktopJourney({
               side === "right" ? "flex-row-reverse" : "flex-row"
             }`}
           >
+            {/* Orange spine segment: this node centre -> next node centre */}
+          {!isLast && (
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-[-68px] left-[calc(50%-0.5px)] top-[68px] w-px origin-top bg-orange"
+              initial={false}
+              animate={{ scaleY: isCompleted ? 1 : 0 }}
+              transition={{
+                duration: prefersReducedMotion ? 0 : 0.7,
+                ease,
+              }}
+            />
+          )}
             {/* ── Card side (50% width) ── */}
             <div className={`w-1/2 ${side === "left" ? "pr-20" : "pl-20"}`}>
               <motion.div

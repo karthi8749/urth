@@ -279,7 +279,7 @@ export function ExpertiseHorizontalScroll() {
             className="scroll-mt-28 border-b border-cream/10"
           >
             {/* Portrait Image - Mobile */}
-            <div className="relative h-48 overflow-hidden sm:h-56">
+            <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
               {/* Actual expertise image */}
               <Image
                 src={item.image}
