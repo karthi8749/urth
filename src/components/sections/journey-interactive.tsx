@@ -386,6 +386,18 @@ function Node({
         transition={{ duration: 0.3, ease }}
       />
 
+            {/* "Click here" hint — only under the FIRST dot (desktop) */}
+      {isNext && index === 0 && (
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-full z-10 mt-3 hidden -translate-x-1/2 whitespace-nowrap bg-brown px-2 py-1 text-[11px] uppercase tracking-[0.22em] text-orange lg:block"
+          animate={prefersReducedMotion ? undefined : { opacity: [0.45, 1, 0.45] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          Click here
+        </motion.span>
+      )}
+      
       {/* Number label above */}
       {showLabel && (
         <span className="pointer-events-none absolute -top-6 text-[10px] tracking-widest text-cream/40">
