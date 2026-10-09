@@ -101,7 +101,7 @@ export function SiteHeader() {
           onClick={toggle}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="group ml-auto flex items-center gap-3 text-cream"
+          className="group ml-auto flex items-center gap-3 text-cream transition-colors duration-300 hover:text-orange"
         >
           <span className="hidden text-[11px] uppercase tracking-[0.22em] md:inline">
             {open ? "Close" : "Menu"}

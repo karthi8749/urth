@@ -124,7 +124,7 @@ export default function AboutPageClient() {
         </Reveal>
       </section>
 
-      <section ref={sectionRef} className="relative overflow-hidden bg-brown" style={{ minHeight: "100vh" }}>
+      <section ref={sectionRef} className="relative overflow-hidden bg-brown pt-24 md:pt-28" style={{ minHeight: "100vh" }}>
         <div className="relative w-full" style={{ height: "80vh" }}>
           {aboutSections.map((section, i) => (
             <div

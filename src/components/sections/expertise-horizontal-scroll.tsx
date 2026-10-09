@@ -168,7 +168,7 @@ export function ExpertiseHorizontalScroll() {
       className="expertise-scroll relative overflow-hidden bg-brown"
     >
       {/* Section title - visible at start */}
-      <div className="pointer-events-none absolute left-6 top-28 z-10 md:left-10 md:top-32">
+      <div className="pointer-events-none hidden md:absolute md:left-10 md:top-32 md:z-10 md:block">
         <p className="text-lg uppercase tracking-[0.28em] text-sky/80 md:text-xl">
           Expertise
         </p>
@@ -270,9 +270,14 @@ export function ExpertiseHorizontalScroll() {
         ))}
       </div>
 
-      {/* Mobile vertical layout */}
-      <div className="block md:hidden">
-        {expertiseData.map((item) => (
+        {/* Mobile vertical layout */}
+        <div className="block md:hidden">
+          <div className="px-6 pb-8 pt-28">
+            <p className="text-lg uppercase tracking-[0.28em] text-sky">
+              Expertise
+            </p>
+          </div>
+          {expertiseData.map((item) => (
           <div
             key={item.number}
             id={item.id}

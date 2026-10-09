@@ -114,7 +114,7 @@ export function ContactForm() {
         type="submit"
         data-cursor-merge="text"
         disabled={status === "loading"}
-        className="inline-flex items-center border border-orange bg-orange px-8 py-3 text-xs font-medium uppercase tracking-[0.18em] text-cream transition-colors hover:bg-cream hover:border-cream hover:text-brown disabled:opacity-60"
+        className="inline-flex items-center border border-cream bg-cream px-8 py-3 text-xs font-medium uppercase tracking-[0.18em] text-brown transition-colors duration-300 hover:border-orange hover:bg-orange hover:text-cream disabled:opacity-60"
       >
         {status === "loading"
           ? "Sending…"
