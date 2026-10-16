@@ -36,6 +36,29 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+  cursor: default;
+}
+
+/* Plain text elements use default cursor so the I-beam text icon does not appear */
+h1, h2, h3, h4, h5, h6, p, span, li, blockquote, figcaption {
+  cursor: default;
+}
+
+/* Links and buttons retain pointer cursor */
+a[href],
+a[href] * {
+  cursor: pointer;
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/* Inputs and textareas keep text cursor for typing */
+input,
+textarea {
+  cursor: text;
 }
 
 .font-display {
