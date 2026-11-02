@@ -1,5 +1,5 @@
 export const journeyIntro = {
-  title: "Let us get started with your journey",
+  title: "Let’s begin your journey",
   lead: "Let’s make something real.",
   body: ``,
   prompt: "Where are you in the process?",

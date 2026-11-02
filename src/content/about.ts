@@ -10,7 +10,7 @@ export const aboutSections = [
   {
     id: "why",
     label: "Why",
-    body: `Urth was founded from the belief that thoughtful design requires clarity, purpose and intention. What began as individual projects evolved into a broader vision: to create architecture and interiors that are considered, relevant and responsive to the people and places they serve. Urth is our way of building something with intention, where
+    body: `Urth was founded on the belief that thoughtful design requires clarity, purpose and intention. What began as individual projects evolved into a broader vision: to create architecture and interiors that are considered, relevant and responsive to the people and places they serve. Urth is our way of building something with intention, where
 every choice has a purpose and nothing exists without a
 reason.`,
   },
@@ -18,6 +18,6 @@ reason.`,
     id: "what",
     label: "What",
     body: `Urth draws from earth, place and intuition. The ground from which we begin, the context we respond to, the instinct
-that tells us when something truly belongs`,
+that tells us when something truly belongs.`,
   },
 ] as const;

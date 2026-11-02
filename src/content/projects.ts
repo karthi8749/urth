@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     slug: "healthcare-wayfinding",
     title: "Patient-Centred Healthcare",
-    featuredImage: "/project-images/Patient-Centred Healthcare & Wayfinding Design/1.png",
+    featuredImage: "/project-images//1.png",
     location: "Abu Dhabi",
     summary:
       "",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
       "A central brand heritage wall forms the project's visual anchor. Integrated timelines, archival imagery and illuminated product displays transform the company's history into an engaging spatial experience. Rather than treating branding as decoration, the design embeds the organisation's story into the workplace and creates a memorable introduction for clients, partners and new employees.",
       "The open office combines generous workstations with suspended storage, collaborative meeting rooms and clear visual connections across departments. Exposed ceilings, visible services and black metal detailing establish a modern industrial character, balanced by natural timber, textured neutral finishes and warm architectural lighting. Deep navy accents reference the brand identity and give the interior a confident, recognisable tone.",
       "A variety of settings supports different styles of work. Formal meeting rooms provide the technology and privacy required for presentations and decision-making, while enclosed focus pods, informal lounges and communal tables accommodate short discussions, concentrated tasks and social interaction. Integrated planting introduces softness and helps create a more comfortable, human-centred atmosphere.",
-      "Design focus: Brand storytelling, employee experience, collaboration, focused work and organizational growth.",
+      "Design focus: Brand storytelling, employee experience, collaboration, focused work and organisational growth.",
       "Material palette: Textured neutral surfaces, natural timber, brushed metal, black-framed glass and deep navy upholstery.",
       "Project vision: To create an inspiring headquarters where company culture, product identity and workplace performance come together in one unified design.",
     ],
@@ -152,9 +152,9 @@ export const projects: Project[] = [
     "A layered façade strategy combines high-performance glazing, bronze-toned vertical fins, perforated mashrabiya screens and integrated landscaping. The screens help reduce direct solar exposure while allowing filtered daylight and maintaining outward views. Their intricate geometric pattern also creates changing shadows throughout the day, adding richness and movement to the elevation.",
     "At ground level, the building is designed to feel open and welcoming. A generous entrance, shaded drop-off area, water feature and carefully arranged planting establish a strong arrival sequence. Transparent glazing at the lower levels creates visual connection between the interior and the public realm, while upper floors benefit from generous daylight, views and access to landscaped terraces.",
     "The project demonstrates how a commercial workplace can balance architectural presence, environmental performance and cultural relevance. By combining passive shading, high-performance materials, greenery and carefully controlled solid-to-void relationships, the building creates a distinctive contemporary identity while responding to climate, context and user comfort.",
-    "Design Focus : Climate-responsive façade, mashrabiya shading, biophilic terraces, clear arrival sequence, passive solar control and contemporary regional identity.",
-    "Material Palette : Light textured stone, high-performance glazing, bronze-toned metal screens and vertical fins, integrated planting, stone paving and reflective water features.",
-    "Vision : A refined contemporary office building that brings together environmental performance, workplace comfort, architectural presence and a distinctly regional façade language."
+    "Design focus: Climate-responsive façade, mashrabiya shading, biophilic terraces, clear arrival sequence, passive solar control and contemporary regional identity.",
+    "Material Palette: Light textured stone, high-performance glazing, bronze-toned metal screens and vertical fins, integrated planting, stone paving and reflective water features.",
+    "Vision: A refined contemporary office building that brings together environmental performance, workplace comfort, architectural presence and a distinctly regional façade language."
   ],
   designFocus: "Climate-responsive façade, mashrabiya shading, biophilic terraces, clear arrival sequence, passive solar control and contemporary regional identity.",
   materialPalette: "Light textured stone, high-performance glazing, bronze-toned metal screens and vertical fins, integrated planting, stone paving and reflective water features.",

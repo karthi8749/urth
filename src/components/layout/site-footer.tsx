@@ -47,7 +47,7 @@ export function SiteFooter() {
             data-cursor-merge="text"
             className="mt-4 block text-cream transition-colors hover:text-orange"
           >
-            Info@urthdesign.com
+            info@urthdesign.com
           </a>
           <p className="mt-3 text-sm text-cream/45">
             INDIA | MIDDLE EAST
