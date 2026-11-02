@@ -38,7 +38,7 @@ export const projects: Project[] = [
   },
   {
     slug: "corporate-office",
-    title: "Contemporary Corporate Office",
+    title: "Innovation Lab",
     featuredImage: "/project-images/Contemporary Corporate Office/1.png",
     location: "Dubai",
     summary:
@@ -64,7 +64,7 @@ export const projects: Project[] = [
   },
   {
     slug: "healthcare-wayfinding",
-    title: "Patient-Centred Healthcare & Wayfinding Design",
+    title: "Patient-Centred Healthcare",
     featuredImage: "/project-images/Patient-Centred Healthcare & Wayfinding Design/1.png",
     location: "Abu Dhabi",
     summary:
@@ -90,7 +90,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fmcg-office",
-    title: "Brand-Led FMCG Office",
+    title: "FMCG Office",
     featuredImage: "/project-images/Brand-Led FMCG Office/3.png",
     location: "Dubai",
     summary:
@@ -142,7 +142,7 @@ export const projects: Project[] = [
 
   {
   slug: "contemporary-office-building",       // URL-la varum: /projects/your-project-slug
-  title: "Contemporary Office Building",
+  title: "The Kinetic Building",
   featuredImage: "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_01.png",
   location: "Dubai",
   summary: "",

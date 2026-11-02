@@ -44,7 +44,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/BAKERY PROJECT/5.png",
       ],
       details: [
-        { label: "Client", value: "B&M Hot Breads Pvt Ltd" },
+        { label: "Client", value: "Hot Breads Ltd." },
         { label: "Location", value: "Dubai" },
         { label: "Year", value: "2024" },
         { label: "Size", value: "300 sqm" },
@@ -62,7 +62,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/Contemporary Corporate Office/6.png",
       ],
       details: [
-        { label: "Client", value: "Contemporary Office" },
+        { label: "Client", value: "Semi Govt Entity" },
         { label: "Location", value: "Dubai" },
         { label: "Year", value: "2025" },
         { label: "Size", value: "1250 sqmt" },
@@ -80,7 +80,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/Patient-Centred Healthcare & Wayfinding Design/6.png",
       ],
       details: [
-        { label: "Client", value: "Healthcare Group" },
+        { label: "Client", value: "VPS Group." },
         { label: "Location", value: "Abu Dhabi" },
         { label: "Year", value: "2014" },
         { label: "Size", value: "8200 sqmt" },
@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/Brand-Led FMCG Office/12.png",
       ],
       details: [
-        { label: "Client", value: "Brand-Led FMCG Office" },
+        { label: "Client", value: "MHP Food Trading" },
         { label: "Location", value: "Dubai" },
         { label: "Year", value: "2022" },
         { label: "Size", value: "350 sqmt" },
@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/Finance HQ/14.png",
       ],
       details: [
-        { label: "Client", value: "financial institution" },
+        { label: "Client", value: " Private" },
         { label: "Location", value: "Abu Dhabi - UAE" },
         { label: "Year", value: "2023" },
         { label: "Size", value: "2500 sqmt" },
@@ -145,10 +145,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         "/project-images/Contemporary Office Building/06.png",
       ],
       details: [
-        { label: "Client", value: "financial institution" },
+        { label: "Client", value: "Private" },
         { label: "Location", value: "Abu Dhabi - UAE" },
         { label: "Year", value: "2023" },
-        { label: "Size", value: "2500 sqmt" },
+        { label: "Size", value: "3100 sqmt" },
         { label: "Category", value: "Workplace" },
         { label: "Service", value: "Design" },
       ],
@@ -168,7 +168,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       slug: "corporate-office",
       image: "/project-images/Contemporary Corporate Office/1.png",
       location: "DUBAI",
-      title: "Contemporary Corporate Office",
+      title: "Innovation Lab",
     },
     {
       slug: "healthcare-wayfinding",
@@ -186,14 +186,14 @@ export default async function ProjectDetailPage({ params }: Props) {
       slug: "fmcg-office",
       image: "/project-images/Brand-Led FMCG Office/1.png",
       location: "DUBAI",
-      title: "Brand-Led FMCG Office",
+      title: "FMCG Office",
     },
 
         {
       slug: "contemporary-office-building",
       image: "/project-images/Contemporary Office Building/Abu_Dhabi_Commercial_Building_01.png",
       location: "ABU DHABI - UAE",
-      title: "Contemporary Office Building",
+      title: "The Kinetic Building",
     },
   ];
 
