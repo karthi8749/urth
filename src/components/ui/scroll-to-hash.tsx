@@ -8,6 +8,29 @@ const PILLAR_IDS = ["architecture", "human-centric", "interior", "management"];
 
 const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
 
+// Scroll through Lenis (if running) so it never drags the page back to its
+// old target. Plain window.scrollTo is the fallback.
+function scrollToY(top: number, smooth: boolean) {
+  const lenis = (
+    window as unknown as {
+      __lenis?: {
+        scrollTo: (
+          t: number,
+          o?: { immediate?: boolean; force?: boolean; duration?: number },
+        ) => void;
+      };
+    }
+  ).__lenis;
+  if (lenis) {
+    lenis.scrollTo(
+      top,
+      smooth ? { duration: 1.2, force: true } : { immediate: true, force: true },
+    );
+  } else {
+    window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+  }
+}
+
 function findPin() {
   const section = document.getElementById("expertise");
   if (!section) return undefined;
@@ -15,7 +38,6 @@ function findPin() {
 }
 
 function scrollToId(id: string, smooth: boolean, arriving = false) {
-  const behavior: ScrollBehavior = smooth ? "smooth" : "auto";
   const pin = findPin();
 
   // Desktop expertise section is pinned + horizontal: jump to the right point
@@ -26,23 +48,23 @@ function scrollToId(id: string, smooth: boolean, arriving = false) {
 
     if (arriving && index > 0) {
       // 1) instantly land on the first card (skips the journey section)
-      window.scrollTo({ top: pin.start, behavior: "auto" });
+      scrollToY(pin.start, false);
       // 2) then glide smoothly to the requested card
       requestAnimationFrame(() =>
         requestAnimationFrame(() =>
-          window.scrollTo({ top, behavior: "smooth" }),
+          scrollToY(top, true),
         ),
       );
       return;
     }
-    window.scrollTo({ top, behavior });
+    scrollToY(top, smooth);
     return;
   }
 
   const el = document.getElementById(id);
   if (!el) return;
   const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-  window.scrollTo({ top, behavior });
+  scrollToY(top, smooth);
 }
 
 export function ScrollToHash() {
