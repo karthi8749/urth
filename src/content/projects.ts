@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     slug: "healthcare-wayfinding",
     title: "Patient-Centred Healthcare",
-    featuredImage: "/project-images//1.png",
+    featuredImage: "/project-images/Patient-Centred Healthcare & Wayfinding Design/1.png",
     location: "Abu Dhabi",
     summary:
       "",
